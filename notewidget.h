@@ -41,10 +41,12 @@ private:
 private:
     QLabel *titleLable;
     QLabel *lastModifiedLable;
+    QLabel *contentLable;
 
     int id;
     QString title;
     QString lastModified;
+    QString content = "";
 
     const QString dateTimeFormat = "dd.MM.yyyy - hh:mm:ss";
 

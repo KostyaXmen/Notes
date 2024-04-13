@@ -14,9 +14,10 @@ NoteWidget::NoteWidget(const Note &note, QWidget *parent) : QWidget(parent)
     id = note.id;
     title = note.title;
     lastModified = note.lastModified.toString(dateTimeFormat);
+    content = note.content.left(10).replace("\n", " ") + "...";
 
     updateLabels();
-    setToolTip(QString("%0\n%1").arg(title).arg(lastModified));
+    setToolTip(QString("%0\n%1\n%2").arg(title).arg(lastModified).arg(content));
 }
 
 int NoteWidget::noteId() const
@@ -28,9 +29,10 @@ void NoteWidget::updateContent(const Note &note)
 {
     title = note.title;
     lastModified = note.lastModified.toString(dateTimeFormat);
+    content = note.content.left(10).replace("\n", " ") + "...";
 
     updateLabels();
-    setToolTip(QString("%0\n%1").arg(title).arg(lastModified));
+    setToolTip(QString("%0\n%1\n%2").arg(title).arg(lastModified).arg(content));
 }
 
 void NoteWidget::resizeEvent(QResizeEvent *event)
@@ -48,16 +50,19 @@ void NoteWidget::setupGui()
 {
     titleLable = new QLabel();
     lastModifiedLable = new QLabel();
+    contentLable = new QLabel();
 
     auto layout = new QVBoxLayout(this);
     layout->addWidget(titleLable);
     layout->addWidget(lastModifiedLable);
+    layout->addWidget(contentLable);
 }
 
 void NoteWidget::updateLabels()
 {
     setElidedText(titleLable, title);
     setElidedText(lastModifiedLable, lastModified);
+    setElidedText(contentLable, content);
 }
 
 void NoteWidget::setElidedText(QLabel *label, const QString &text)

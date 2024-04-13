@@ -77,15 +77,7 @@ void XlmStorage::writeNote(QXmlStreamWriter &stream, const Note &note)
     stream.writeStartElement(noteToken);
     stream.writeAttribute(titleToken, note.title);
     stream.writeAttribute(lastModifiedToken, note.lastModified.toString(dateTimeFormat));
-    
-    // Запись содержимого заметки
     stream.writeTextElement(contentToken, note.content);
-    
-    // Запись тегов
-    for (const QString& tag : note.tags) {
-        stream.writeTextElement(tagToken, tag);
-    }
-    
     stream.writeEndElement();
 }
 
@@ -103,12 +95,6 @@ void XlmStorage::readNote(QXmlStreamReader &stream, std::vector<Note> &notes)
         {
             note.content = stream.readElementText();
         }
-        
-        while (stream.readNextStartElement() && stream.name() == tagToken) {
-            QString tag = stream.readElementText();
-            note.tags.append(tag);
-        }
-        
         notes.push_back(note);
     }
     stream.skipCurrentElement();

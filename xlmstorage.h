@@ -33,7 +33,6 @@ private:
     const QString titleToken = "title";
     const QString lastModifiedToken = "modified";
     const QString contentToken = "content";
-    const QString tagToken = "tags";
 };
 
 #endif // XLMSTORAGE_H

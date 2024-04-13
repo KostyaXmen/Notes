@@ -39,8 +39,8 @@ void NotesManager::removeNote(int id)
 {
     notes.erase(id);
 
-    // if(notes.empty())
-    //     createNewNote();
+    if(notes.empty())
+        createNewNote();
 }
 
 void NotesManager::renameNote(int id, const QString &newTitle)
