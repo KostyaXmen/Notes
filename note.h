@@ -14,6 +14,7 @@ public:
     QString content;
     QString tags;
     QDateTime lastModified;
+    QDateTime tags;
 };
 
 #endif // NOTE_H
