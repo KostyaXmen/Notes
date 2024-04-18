@@ -107,3 +107,8 @@ void NoteWidget::onRenameActionTriggered()
         emit renameNote(id, renameDialog.newNane());
     } 
 }
+
+QString NoteWidget::getTitle()
+{
+    return title;
+}

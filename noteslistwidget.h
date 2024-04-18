@@ -38,6 +38,11 @@ private:
     void moveCurrentItemToTop(const Note &note);
     void setupNoteItem(const Note &note, QListWidgetItem *item);
 
+    void filterNotes(const QString &searchText);
+
+private slots:
+    void on_lineEdit_textEdited(const QString &arg1);
+
 private:
     Ui::NotesListWidget *ui;
 };

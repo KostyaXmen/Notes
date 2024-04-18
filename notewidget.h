@@ -50,6 +50,9 @@ private:
 
     const QString dateTimeFormat = "dd.MM.yyyy - hh:mm:ss";
 
+public:
+    QString getTitle();
+
 };
 
 #endif // NOTEWIDGET_H

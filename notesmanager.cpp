@@ -28,7 +28,7 @@ void NotesManager::createNewNote()
     int id = nextNoteId();
     auto &[note, textDocument] = notes[id];
     note.id = id;
-    note.title = "New Note"; // note.title = QString("New Note %0").arg(id);
+    note.title = "New Note";
     note.lastModified = QDateTime::currentDateTime();
     textDocument = createNewTextDocument(note);
 
