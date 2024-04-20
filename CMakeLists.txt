@@ -9,13 +9,16 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 qt_standard_project_setup()
 
 qt_add_executable(Obsidian
-  main.cpp mainwindow.cpp mainwindow.h mainwindow.ui
+  main.cpp
+  mainwindow.cpp mainwindow.h mainwindow.ui
   noteslistwidget.cpp noteslistwidget.h noteslistwidget.ui
   note.h
   notesmanager.cpp notesmanager.h
   notewidget.cpp notewidget.h
   renamedialog.cpp renamedialog.h renamedialog.ui
   xlmstorage.cpp xlmstorage.h
+  graphwidget.cpp graphwidget.h graphwidget.ui
+  moveitem.cpp moveitem.h
 )
 
 target_link_libraries(Obsidian PRIVATE Qt6::Widgets)

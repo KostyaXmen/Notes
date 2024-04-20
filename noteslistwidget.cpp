@@ -4,8 +4,7 @@
 #include "note.h"
 #include "notewidget.h"
 
-NotesListWidget::NotesListWidget(QWidget *parent)
-    : QWidget(parent), ui(new Ui::NotesListWidget)
+NotesListWidget::NotesListWidget(QWidget *parent) : QWidget(parent), ui(new Ui::NotesListWidget)
 {
     ui->setupUi(this);
 

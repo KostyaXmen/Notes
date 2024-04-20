@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -94,6 +94,16 @@
          <string>LOL</string>
         </property>
        </widget>
+       <widget class="GraphWidget" name="graphWidget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>70</y>
+          <width>120</width>
+          <height>80</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -116,6 +126,12 @@
    <class>NotesListWidget</class>
    <extends>QWidget</extends>
    <header>noteslistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GraphWidget</class>
+   <extends>QWidget</extends>
+   <header>graphwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

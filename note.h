@@ -15,12 +15,6 @@ public:
     QString content;
     QDateTime lastModified;
     std::vector<std::string> tags;
-
-    // Getter for tags
-    const std::vector<std::string>& getTags() const { return tags; }
-
-    // Setter for tags
-    void setTags(const std::vector<std::string>& newTags) { tags = newTags; }
 };
 
 #endif // NOTE_H
