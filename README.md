@@ -1,1 +1,1 @@
-This is note application
+This is not'e' application
