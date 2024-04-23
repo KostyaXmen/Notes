@@ -91,9 +91,8 @@ void NotesListWidget::filterNotes(const QString &searchText)
     {
         auto *item = ui->listWidget->item(i);
         auto *widget = static_cast<NoteWidget*>(ui->listWidget->itemWidget(item));
-        QString noteText = widget->getTitle();
 
-        if (noteText.contains(searchText, Qt::CaseInsensitive))
+        if (widget->getTitle().contains(searchText, Qt::CaseInsensitive) || widget->getContent().contains(searchText, Qt::CaseInsensitive))
         {
             item->setHidden(false);
         }
@@ -107,5 +106,4 @@ void NotesListWidget::filterNotes(const QString &searchText)
 void NotesListWidget::on_lineEdit_textEdited(const QString &arg1)
 {
     filterNotes(arg1);
-    qDebug() << arg1;
 }

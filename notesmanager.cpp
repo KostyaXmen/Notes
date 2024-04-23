@@ -28,7 +28,7 @@ void NotesManager::createNewNote()
     int id = nextNoteId();
     auto &[note, textDocument] = notes[id];
     note.id = id;
-    note.title = "New Note";
+    note.title = "New note";
     note.lastModified = QDateTime::currentDateTime();
     textDocument = createNewTextDocument(note);
 
@@ -39,7 +39,7 @@ void NotesManager::removeNote(int id)
 {
     notes.erase(id);
 
-    if(notes.empty())
+    if (notes.empty())
         createNewNote();
 }
 
@@ -102,7 +102,7 @@ void NotesManager::readNotes()
     for (auto n : savedNotes)
     {
         n.id = nextNoteId();
-        auto&[note, textDocumnet] = notes[n.id];
+        auto &[note, textDocumnet] = notes[n.id];
         note = n;
         textDocumnet = createNewTextDocument(note);
     }
@@ -112,6 +112,48 @@ void NotesManager::writeNotes()
 {
     XlmStorage storage;
     storage.write(noteCollection());
+}
+
+void NotesManager::getTagsFromContent(int id)
+{
+    QString content = notes.at(id).first.content;
+    QString tags;
+    QString word;
+    bool withinWord = false;
+
+    for (int i = 0; i < content.length(); ++i)
+    {
+        QChar currentChar = content[i];
+
+        if (currentChar.isSpace() || currentChar == '.' || currentChar == ',' || currentChar == '?' || currentChar == '!')
+        {
+            if (withinWord && word.startsWith('#') && word.length() > 1)
+            {
+                if (!tags.isEmpty())
+                    tags += ' ';
+                tags += word;
+            }
+
+            withinWord = false;
+            word.clear();
+        }
+        else
+        {
+            if (!withinWord)
+                withinWord = true;
+            word += currentChar;
+        }
+    }
+
+    if (withinWord && word.startsWith('#') && word.length() > 1)
+    {
+        if (!tags.isEmpty())
+            tags += ' ';
+        tags += word;
+    }
+
+    qDebug() << tags;
+    notes.at(id).first.tags = tags;
 }
 
 std::unique_ptr<QTextDocument> NotesManager::createNewTextDocument(const Note &note)

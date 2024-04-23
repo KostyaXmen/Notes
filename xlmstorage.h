@@ -26,13 +26,14 @@ private:
 private:
     QString fullFilePath;
 
-    const QString fileName = "mynotes. xml";
+    const QString fileName = "mynotes.xml";
     const QString dateTimeFormat = "dd/MM/yyyy - hh:mm:ss";
     const QString xmlRootToken = "NotesList";
     const QString noteToken = "Note";
     const QString titleToken = "title";
     const QString lastModifiedToken = "modified";
     const QString contentToken = "content";
+    const QString tagsToken = "tags";
 };
 
 #endif // XLMSTORAGE_H

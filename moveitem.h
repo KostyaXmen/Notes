@@ -10,6 +10,8 @@
 #include <QDebug>
 #include <QCursor>
 
+#include "note.h"
+
 class MoveItem : public QObject, public QGraphicsItem
 {
     Q_OBJECT
@@ -25,6 +27,15 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+public:
+    void setupMoveItem(const Note &note);
+    QString title;
+    int id;
+    int getId() {return id;};
+
+private:
+    QGraphicsTextItem *titleText;
 };
 
 #endif // MOVEITEM_H

@@ -2,6 +2,7 @@
 
 #include "graphwidget.h"
 #include "ui_graphwidget.h"
+#include "note.h"
 
 /* Функция для получения рандомного числа
  * в диапазоне от минимального до максимального
@@ -15,20 +16,19 @@ GraphWidget::GraphWidget(QWidget *parent) : QWidget(parent), ui(new Ui::GraphWid
 {
     ui->setupUi(this);
 
-    // Косметическая подготовка приложения
-    this->resize(640, 640); // Устанавливаем размеры окна приложения
+    this->resize(640, 640);
     this->setFixedSize(640, 640);
 
-    scene = new QGraphicsScene(this);                   // Инициализируем графическую сцену
-    scene->setItemIndexMethod(QGraphicsScene::NoIndex); // настраиваем индексацию элементов
+    scene = new QGraphicsScene(this);
+    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
 
-    ui->graphicsView->resize(600, 600);                             // Устанавливаем размер graphicsView
-    ui->graphicsView->setScene(scene);                              // Устанавливаем графическую сцену в graphicsView
-    ui->graphicsView->setRenderHint(QPainter::Antialiasing);        // Настраиваем рендер
-    ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground); // Кэш фона
+    ui->graphicsView->resize(600, 600);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
 
-    scene->setSceneRect(0, 0, 500, 500); // Устанавливаем размер сцены
+    scene->setSceneRect(0, 0, 500, 500);
 }
 
 GraphWidget::~GraphWidget()
@@ -36,10 +36,24 @@ GraphWidget::~GraphWidget()
     delete ui;
 }
 
+void GraphWidget::addVertex(const Note &note)
+{
+    MoveItem *item = new MoveItem();
+    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    scene->addItem(item);
+    item->setupMoveItem(note);
+}
+
+void GraphWidget::removeVertex(int id)
+{
+
+}
+
+void GraphWidget::renameVertex(int id)
+{
+}
+
 void GraphWidget::on_pushButton_clicked()
 {
-    MoveItem *item = new MoveItem();     // Создаём графический элемента
-    item->setPos(randomBetween(30, 470), // Устанавливаем случайную позицию элемента
-                 randomBetween(30, 470));
-    scene->addItem(item); // Добавляем элемент на графическую сцену
+    qDebug() << "Aaaaaaaaaaaaaaaaa";
 }

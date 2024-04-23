@@ -52,6 +52,7 @@ private:
 
 public:
     QString getTitle();
+    QString getContent();
 
 };
 

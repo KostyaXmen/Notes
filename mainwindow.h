@@ -40,6 +40,8 @@ private:
     void removeNote(int id);
 
     void init();
+
+    bool isWriting = true;
     
     Ui::MainWindow *ui;
     NotesManager &notesManager;

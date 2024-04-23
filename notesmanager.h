@@ -35,10 +35,12 @@ signals:
 
 private:
     void onNoteContentChanged(int id);
+    std::unique_ptr<QTextDocument> createNewTextDocument(const Note &note);
 
+public:
     void readNotes();
     void writeNotes();
-    std::unique_ptr<QTextDocument> createNewTextDocument(const Note &note);
+    void getTagsFromContent(int id);
 
 private:
     std::unordered_map<int, std::pair<Note, std::unique_ptr<QTextDocument>>> notes;

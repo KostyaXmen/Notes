@@ -14,7 +14,7 @@ public:
     QString title;
     QString content;
     QDateTime lastModified;
-    std::vector<std::string> tags;
+    QString tags;
 };
 
 #endif // NOTE_H

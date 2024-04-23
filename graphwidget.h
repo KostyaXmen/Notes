@@ -1,32 +1,38 @@
-    #pragma once
+#pragma once
 
-    #ifndef GRAPHWIDGET_H
-    #define GRAPHWIDGET_H
+#ifndef GRAPHWIDGET_H
+#define GRAPHWIDGET_H
 
-    #include <QWidget>
-    #include <QGraphicsScene>
+#include <QWidget>
+#include <QGraphicsScene>
 
-    #include "moveitem.h"
+#include "moveitem.h"
 
-    namespace Ui
-    {
-        class GraphWidget;
-    }
+namespace Ui
+{
+    class GraphWidget;
+}
 
-    class GraphWidget : public QWidget
-    {
-        Q_OBJECT
+class Note;
 
-    public:
-        explicit GraphWidget(QWidget *parent = nullptr);
-        ~GraphWidget();
+class GraphWidget : public QWidget
+{
+    Q_OBJECT
 
-    private slots:
-        void on_pushButton_clicked();
+public:
+    explicit GraphWidget(QWidget *parent = nullptr);
+    ~GraphWidget();
 
-    private:
-        Ui::GraphWidget *ui;
-        QGraphicsScene *scene;
-    };
+    void addVertex(const Note &note);
+    void removeVertex(int id);
+    void renameVertex(int id);
 
-    #endif // GRAPHWIDGET_H
+public slots:
+    void on_pushButton_clicked();
+
+private:
+    Ui::GraphWidget *ui;
+    QGraphicsScene *scene;
+};
+
+#endif // GRAPHWIDGET_H

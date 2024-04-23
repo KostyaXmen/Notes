@@ -21,6 +21,7 @@ MainWindow::MainWindow(NotesManager &manager, QWidget *parent) : QMainWindow(par
     connect(ui->notesListWidget, &NotesListWidget::removeNote, this, &MainWindow::onRemoveNote);
     connect(ui->notesListWidget, &NotesListWidget::renameNote, this, &MainWindow::onRenameNote);
 
+    onSelectedNoteChanged(1);
 }
 
 MainWindow::~MainWindow()
@@ -36,6 +37,7 @@ void MainWindow::on_newNoteButton_clicked()
 void MainWindow::on_removeNoteButton_clicked()
 {
     removeNote(ui->notesListWidget->currentNoteId());
+    ui->graphWidget->removeVertex(ui->notesListWidget->currentNoteId());
 }
 
 void MainWindow::onNewNoteCreated(int id)
@@ -45,7 +47,14 @@ void MainWindow::onNewNoteCreated(int id)
 
 void MainWindow::onNoteContentChanged(int id)
 {
+    if (isWriting)
+    {
+        isWriting = false;
+        notesManager.writeNotes();
+        isWriting = true;
+    }
     ui->notesListWidget->updateCurrentNote(notesManager.note(id));
+    notesManager.getTagsFromContent(id);
 }
 
 void MainWindow::onSelectedNoteChanged(int id)
@@ -74,6 +83,7 @@ void MainWindow::onRenameNote(int id, const QString &newTitle)
 void MainWindow::addNoteToList(const Note &note)
 {
     ui->notesListWidget->addNote(note);
+    ui->graphWidget->addVertex(note);
 }
 
 void MainWindow::removeNote(int id)
@@ -98,7 +108,8 @@ void MainWindow::removeNote(int id)
 void MainWindow::init()
 {
     auto notesList = notesManager.noteCollection();
-    std::sort(notesList.begin(), notesList.end(),[](const Note &left, const Note &right){return left.lastModified < right.lastModified;});
+    std::sort(notesList.begin(), notesList.end(), [](const Note &left, const Note &right)
+              { return left.lastModified < right.lastModified; });
     for (auto &note : notesList)
     {
         addNoteToList(note);

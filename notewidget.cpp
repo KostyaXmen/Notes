@@ -112,3 +112,8 @@ QString NoteWidget::getTitle()
 {
     return title;
 }
+
+QString NoteWidget::getContent()
+{
+    return content;
+}
