@@ -37,7 +37,6 @@ void MainWindow::on_newNoteButton_clicked()
 void MainWindow::on_removeNoteButton_clicked()
 {
     removeNote(ui->notesListWidget->currentNoteId());
-    ui->graphWidget->removeVertex(ui->notesListWidget->currentNoteId());
 }
 
 void MainWindow::onNewNoteCreated(int id)
@@ -83,7 +82,7 @@ void MainWindow::onRenameNote(int id, const QString &newTitle)
 void MainWindow::addNoteToList(const Note &note)
 {
     ui->notesListWidget->addNote(note);
-    ui->graphWidget->addVertex(note);
+    ui->graphWidget->addNote(note);
 }
 
 void MainWindow::removeNote(int id)
@@ -114,4 +113,10 @@ void MainWindow::init()
     {
         addNoteToList(note);
     }
+}
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    // if (index == 1) init();
+    // qDebug() << index;
 }

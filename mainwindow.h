@@ -10,7 +10,7 @@ namespace Ui
 }
 QT_END_NAMESPACE
 
-class NotesManager ;
+class NotesManager;
 class Note;
 
 class MainWindow : public QMainWindow
@@ -25,6 +25,7 @@ private slots:
     // Handle signal from ui
     void on_newNoteButton_clicked();
     void on_removeNoteButton_clicked();
+    void on_tabWidget_currentChanged(int index);
 
     // Handle NotesManager signals
     void onNewNoteCreated(int id);
@@ -42,7 +43,7 @@ private:
     void init();
 
     bool isWriting = true;
-    
+
     Ui::MainWindow *ui;
     NotesManager &notesManager;
 };

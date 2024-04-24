@@ -4,9 +4,6 @@
 #include "ui_graphwidget.h"
 #include "note.h"
 
-/* Функция для получения рандомного числа
- * в диапазоне от минимального до максимального
- * */
 static int randomBetween(int low, int high)
 {
     return QRandomGenerator::global()->bounded(low, high + 1);
@@ -15,20 +12,18 @@ static int randomBetween(int low, int high)
 GraphWidget::GraphWidget(QWidget *parent) : QWidget(parent), ui(new Ui::GraphWidget)
 {
     ui->setupUi(this);
-
-    this->resize(640, 640);
-    this->setFixedSize(640, 640);
-
     scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
 
-    ui->graphicsView->resize(600, 600);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    ui->graphicsView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 
     scene->setSceneRect(0, 0, 500, 500);
+
+    connect(scene, &QGraphicsScene::changed, this, &GraphWidget::updateLines);
 }
 
 GraphWidget::~GraphWidget()
@@ -36,24 +31,74 @@ GraphWidget::~GraphWidget()
     delete ui;
 }
 
-void GraphWidget::addVertex(const Note &note)
+void GraphWidget::addNote(const Note &note)
 {
-    MoveItem *item = new MoveItem();
+    MoveItem *item = new MoveItem(MoveItem::noteType);
     item->setPos(randomBetween(30, 470), randomBetween(30, 470));
     scene->addItem(item);
-    item->setupMoveItem(note);
+    item->setupMoveItemNote(note);
+
+    for (const QString &tag : note.tags.split(' '))
+    {
+        if (!m_addedNames.contains(tag))
+        {
+            MoveItem *tagItem = new MoveItem(MoveItem::tagType);
+            tagItem->setPos(randomBetween(30, 470), randomBetween(30, 470));
+            scene->addItem(tagItem);
+            tagItem->setupMoveItemTag(tag);
+            m_addedNames.insert(tag);
+        }
+    }
+    connectItems(item);
 }
 
-void GraphWidget::removeVertex(int id)
+void GraphWidget::updateLines()
 {
-
+    QList<QGraphicsItem *> lines = scene->items();
+    for (QGraphicsItem *item : lines)
+    {
+        QGraphicsLineItem *line = dynamic_cast<QGraphicsLineItem *>(item);
+        if (line)
+        {
+            scene->removeItem(line);
+            delete line;
+        }
+    }
+    QList<QGraphicsItem *> items = scene->items();
+    for (QGraphicsItem *item : items)
+    {
+        MoveItem *noteItem = dynamic_cast<MoveItem *>(item);
+        if (noteItem && noteItem->itemType == MoveItem::noteType)
+        {
+            connectItems(noteItem);
+        }
+    }
 }
 
-void GraphWidget::renameVertex(int id)
+void GraphWidget::drawLineBetweenItems(MoveItem *noteItem, MoveItem *tagItem)
 {
+    QGraphicsLineItem *line = new QGraphicsLineItem(noteItem->getPosition().x(), noteItem->getPosition().y(),
+                                                    tagItem->getPosition().x(), tagItem->getPosition().y());
+    line->setPen(QPen(Qt::black));
+
+    scene->addItem(line);
 }
 
-void GraphWidget::on_pushButton_clicked()
+void GraphWidget::connectItems(MoveItem *noteItem)
 {
-    qDebug() << "Aaaaaaaaaaaaaaaaa";
+    QStringList tagList = noteItem->tags.split(' ');
+
+    for (const QString &tag : tagList)
+    {
+        QList<QGraphicsItem *> items = scene->items();
+        for (QGraphicsItem *item : items)
+        {
+            MoveItem *tagItem = dynamic_cast<MoveItem *>(item);
+            if (tagItem && tagItem->itemType == MoveItem::tagType && tagItem->title == tag)
+            {
+                drawLineBetweenItems(noteItem, tagItem);
+                break;
+            }
+        }
+    }
 }

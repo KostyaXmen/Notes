@@ -16,7 +16,12 @@ class MoveItem : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit MoveItem(QObject *parent = 0);
+    enum ItemType
+    {
+        noteType,
+        tagType
+    };
+    explicit MoveItem(ItemType type, QObject *parent = 0);
     ~MoveItem();
 
 signals:
@@ -29,10 +34,14 @@ private:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 public:
-    void setupMoveItem(const Note &note);
+    void setupMoveItemNote(const Note &note);
+    void setupMoveItemTag(const QString tag);
     QString title;
+    QString tags;
     int id;
-    int getId() {return id;};
+    ItemType itemType;
+
+    QPointF getPosition() const;
 
 private:
     QGraphicsTextItem *titleText;

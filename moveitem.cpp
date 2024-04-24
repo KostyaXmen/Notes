@@ -1,7 +1,8 @@
 #include "moveitem.h"
 
-MoveItem::MoveItem(QObject *parent) : QObject(parent), QGraphicsItem()
+MoveItem::MoveItem(ItemType type, QObject *parent) : QObject(parent), QGraphicsItem()
 {
+    itemType = type;
 }
 
 MoveItem::~MoveItem()
@@ -15,11 +16,24 @@ QRectF MoveItem::boundingRect() const
 
 void MoveItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setPen(Qt::black);
-    painter->setBrush(Qt::green);
-    painter->drawEllipse(-30, -30, 60, 60);
-    Q_UNUSED(option);
-    Q_UNUSED(widget);
+    switch (itemType)
+    {
+    case noteType:
+        painter->setPen(Qt::black);
+        painter->setBrush(Qt::green);
+        painter->drawEllipse(-30, -30, 60, 60);
+        Q_UNUSED(option);
+        Q_UNUSED(widget);
+        break;
+
+    case tagType:
+        painter->setPen(Qt::black);
+        painter->setBrush(Qt::red);
+        painter->drawEllipse(-15, -15, 30, 30);
+        Q_UNUSED(option);
+        Q_UNUSED(widget);
+        break;
+    }
 }
 
 void MoveItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -39,11 +53,26 @@ void MoveItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     Q_UNUSED(event);
 }
 
-void MoveItem::setupMoveItem(const Note &note)
+void MoveItem::setupMoveItemNote(const Note &note)
 {
     titleText = new QGraphicsTextItem(note.title, this);
     titleText->setPos(-30, 30);
 
     title = note.title;
+    tags = note.tags;
     id = note.id;
 }
+
+void MoveItem::setupMoveItemTag(const QString tag)
+{
+    titleText = new QGraphicsTextItem(tag, this);
+    titleText->setPos(-15, 15);
+
+    title = tag;
+}
+    
+QPointF MoveItem::getPosition() const
+{
+    return mapToScene(0, 0);
+}
+

@@ -22,13 +22,15 @@ class GraphWidget : public QWidget
 public:
     explicit GraphWidget(QWidget *parent = nullptr);
     ~GraphWidget();
+    void addNote(const Note &note);
+    void updateLines();
 
-    void addVertex(const Note &note);
-    void removeVertex(int id);
-    void renameVertex(int id);
+private:
+    void drawLineBetweenItems(MoveItem *noteItem, MoveItem *tagItem);
+    void connectItems(MoveItem* noteItem);
 
-public slots:
-    void on_pushButton_clicked();
+
+    QSet<QString> m_addedNames;
 
 private:
     Ui::GraphWidget *ui;

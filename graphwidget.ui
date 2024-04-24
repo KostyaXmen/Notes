@@ -14,14 +14,22 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="horizontalSpacing">
+    <number>0</number>
+   </property>
    <item row="1" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Add new</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
     <widget class="QGraphicsView" name="graphicsView"/>
    </item>
   </layout>
