@@ -21,7 +21,11 @@ MainWindow::MainWindow(NotesManager &manager, QWidget *parent) : QMainWindow(par
     connect(ui->notesListWidget, &NotesListWidget::removeNote, this, &MainWindow::onRemoveNote);
     connect(ui->notesListWidget, &NotesListWidget::renameNote, this, &MainWindow::onRenameNote);
 
-    onSelectedNoteChanged(1);
+    connect(ui->graphWidget, &GraphWidget::onMoveItemClicked, this, &MainWindow::onMoveItemClicked);
+    connect(ui->graphWidget, &GraphWidget::removeNoteGraph, this, &MainWindow::onRemoveNote);
+    connect(ui->graphWidget, &GraphWidget::renameNoteGraph, this, &MainWindow::onRenameNote);
+
+    // onSelectedNoteChanged(1);
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +58,8 @@ void MainWindow::onNoteContentChanged(int id)
     }
     ui->notesListWidget->updateCurrentNote(notesManager.note(id));
     notesManager.getTagsFromContent(id);
+    ui->graphWidget->updateTags(notesManager.note(id));
+    ui->graphWidget->updateLines();
 }
 
 void MainWindow::onSelectedNoteChanged(int id)
@@ -70,13 +76,33 @@ void MainWindow::onSelectedNoteChanged(int id)
 
 void MainWindow::onRemoveNote(int id)
 {
+    ui->notesListWidget->setCurrentNote(id);
     removeNote(id);
 }
 
 void MainWindow::onRenameNote(int id, const QString &newTitle)
 {
+    ui->notesListWidget->setCurrentNote(id);
     notesManager.renameNote(id, newTitle);
+    ui->graphWidget->renameNote(id, newTitle);
     ui->notesListWidget->updateCurrentNote(notesManager.note(id));
+}
+
+void MainWindow::onMoveItemClicked(const int id, const QString &title)
+{
+    if (id != -1)
+    {
+        ui->notesListWidget->setCurrentNote(id);
+        ui->notesListWidget->setSearchText("");
+    }
+    else
+    {
+        ui->notesListWidget->setSearchText(title);
+    }
+
+    qDebug() << id << "-" << title;
+    ui->tabWidget->setCurrentIndex(0);
+    ui->graphWidget->updateLines();
 }
 
 void MainWindow::addNoteToList(const Note &note)
@@ -99,8 +125,10 @@ void MainWindow::removeNote(int id)
             ui->textEdit->setDocument(nullptr);
         }
 
-        ui->notesListWidget->removeCurrentNote();
+        ui->notesListWidget->removeCurrentNote(); // here is errrorrorororrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr !!!!!!!!!!!!!!!!!!!!!!!!!11 404
+        ui->graphWidget->removeNote(id);
         notesManager.removeNote(id);
+        qDebug() << "deleted.";
     }
 }
 

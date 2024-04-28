@@ -41,7 +41,7 @@ void NotesListWidget::updateCurrentNote(const Note &note)
     }
     else
     {
-        auto widget = static_cast<NoteWidget*>(ui->listWidget->itemWidget(ui->listWidget->currentItem()));
+        auto widget = static_cast<NoteWidget *>(ui->listWidget->itemWidget(ui->listWidget->currentItem()));
         widget->updateContent(note);
     }
 }
@@ -49,8 +49,29 @@ void NotesListWidget::updateCurrentNote(const Note &note)
 int NotesListWidget::currentNoteId()
 {
     auto *currentItem = ui->listWidget->currentItem();
-    int noteId = static_cast<NoteWidget*>(ui->listWidget->itemWidget(currentItem))->noteId();
+    int noteId = static_cast<NoteWidget *>(ui->listWidget->itemWidget(currentItem))->noteId();
     return noteId;
+}
+
+void NotesListWidget::setSearchText(const QString &text)
+{
+    ui->lineEdit->setText(text);
+    filterNotes(text);
+}
+
+void NotesListWidget::setCurrentNote(int id)
+{
+    for (int i = 0; i < ui->listWidget->count(); i++)
+    {
+        auto *item = ui->listWidget->item(i);
+        auto *widget = static_cast<NoteWidget *>(ui->listWidget->itemWidget(item));
+
+        if (widget->noteId() == id)
+        {
+            ui->listWidget->setCurrentItem(item);
+            break;
+        }
+    }
 }
 
 void NotesListWidget::onItemSelectionChanged()
@@ -67,7 +88,7 @@ void NotesListWidget::onItemSelectionChanged()
 void NotesListWidget::moveCurrentItemToTop(const Note &note)
 {
     blockSignals(true);
-    auto  item = ui->listWidget->takeItem(ui->listWidget->currentRow());
+    auto item = ui->listWidget->takeItem(ui->listWidget->currentRow());
 
     ui->listWidget->insertItem(0, item);
     setupNoteItem(note, item);
@@ -83,6 +104,7 @@ void NotesListWidget::setupNoteItem(const Note &note, QListWidgetItem *item)
     item->setSizeHint(widget->sizeHint());
     ui->listWidget->setItemWidget(item, widget);
     ui->listWidget->setCurrentItem(item);
+    setCurrentNote(note.id); // dfffffffff
 }
 
 void NotesListWidget::filterNotes(const QString &searchText)
@@ -90,7 +112,7 @@ void NotesListWidget::filterNotes(const QString &searchText)
     for (int i = 0; i < ui->listWidget->count(); i++)
     {
         auto *item = ui->listWidget->item(i);
-        auto *widget = static_cast<NoteWidget*>(ui->listWidget->itemWidget(item));
+        auto *widget = static_cast<NoteWidget *>(ui->listWidget->itemWidget(item));
 
         if (widget->getTitle().contains(searchText, Qt::CaseInsensitive) || widget->getContent().contains(searchText, Qt::CaseInsensitive))
         {

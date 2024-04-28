@@ -36,6 +36,9 @@ private slots:
     void onRemoveNote(int id);
     void onRenameNote(int id, const QString &newTitle);
 
+    // Handle graphWidget signals
+    void onMoveItemClicked(const int id, const QString &title);
+
 private:
     void addNoteToList(const Note &note);
     void removeNote(int id);

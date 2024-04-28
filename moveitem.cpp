@@ -53,6 +53,12 @@ void MoveItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     Q_UNUSED(event);
 }
 
+void MoveItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    emit itemDoubleClicked(id, title);
+    Q_UNUSED(event);
+}
+
 void MoveItem::setupMoveItemNote(const Note &note)
 {
     titleText = new QGraphicsTextItem(note.title, this);
@@ -69,6 +75,8 @@ void MoveItem::setupMoveItemTag(const QString tag)
     titleText->setPos(-15, 15);
 
     title = tag;
+    tags = "";
+    id = -1;
 }
     
 QPointF MoveItem::getPosition() const

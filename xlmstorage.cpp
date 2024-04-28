@@ -18,7 +18,6 @@ XlmStorage::XlmStorage()
     }
 
     fullFilePath = QString("%0/%1").arg(path).arg(fileName);
-    qDebug() << fullFilePath;
 }
 
 std::vector<Note> XlmStorage::read()

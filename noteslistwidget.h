@@ -26,6 +26,8 @@ public:
     void updateCurrentNote(const Note &note);
 
     int currentNoteId();
+    void setSearchText(const QString &text);
+    void setCurrentNote(int id);
 
 signals:
     void selectedNoteChanged(int id);

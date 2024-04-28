@@ -120,6 +120,7 @@ void NotesManager::getTagsFromContent(int id)
     QString tags;
     QString word;
     bool withinWord = false;
+    QStringList uniqueTags;
 
     for (int i = 0; i < content.length(); ++i)
     {
@@ -129,9 +130,8 @@ void NotesManager::getTagsFromContent(int id)
         {
             if (withinWord && word.startsWith('#') && word.length() > 1)
             {
-                if (!tags.isEmpty())
-                    tags += ' ';
-                tags += word;
+                if (!uniqueTags.contains(word))
+                    uniqueTags.append(word);
             }
 
             withinWord = false;
@@ -147,19 +147,18 @@ void NotesManager::getTagsFromContent(int id)
 
     if (withinWord && word.startsWith('#') && word.length() > 1)
     {
-        if (!tags.isEmpty())
-            tags += ' ';
-        tags += word;
+        if (!uniqueTags.contains(word))
+            uniqueTags.append(word);
     }
 
-    qDebug() << tags;
+    tags = uniqueTags.join(' ');
     notes.at(id).first.tags = tags;
 }
 
 std::unique_ptr<QTextDocument> NotesManager::createNewTextDocument(const Note &note)
 {
     auto textDocument = std::make_unique<QTextDocument>(note.content);
-    connect(textDocument.get(), &QTextDocument::contentsChange, mapChangedSignalToNoteId, qOverload<>(&QSignalMapper::map));
+    connect(textDocument.get(), &QTextDocument::contentsChange, mapChangedSignalToNoteId, qOverload<>(&QSignalMapper::map)); // ToDo
     mapChangedSignalToNoteId->setMapping(textDocument.get(), note.id);
     return textDocument;
 }
