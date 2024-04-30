@@ -15,6 +15,7 @@ NoteWidget::NoteWidget(const Note &note, QWidget *parent) : QWidget(parent)
     title = note.title;
     lastModified = note.lastModified.toString(dateTimeFormat);
     content = note.content.left(10).replace("\n", " ") + "...";
+    tags = note.tags;
 
     updateLabels();
     setToolTip(QString("%0\n%1\n%2").arg(title).arg(lastModified).arg(content));
@@ -30,6 +31,8 @@ void NoteWidget::updateContent(const Note &note)
     title = note.title;
     lastModified = note.lastModified.toString(dateTimeFormat);
     content = note.content.left(10).replace("\n", " ") + "...";
+    tags = note.tags;
+    qDebug() << tags;
 
     updateLabels();
     setToolTip(QString("%0\n%1\n%2").arg(title).arg(lastModified).arg(content));
@@ -113,7 +116,7 @@ QString NoteWidget::getTitle()
     return title;
 }
 
-QString NoteWidget::getContent()
+QString NoteWidget::getTags()
 {
-    return content;
+    return tags;
 }

@@ -104,7 +104,6 @@ void NotesListWidget::setupNoteItem(const Note &note, QListWidgetItem *item)
     item->setSizeHint(widget->sizeHint());
     ui->listWidget->setItemWidget(item, widget);
     ui->listWidget->setCurrentItem(item);
-    setCurrentNote(note.id); // dfffffffff
 }
 
 void NotesListWidget::filterNotes(const QString &searchText)
@@ -114,7 +113,7 @@ void NotesListWidget::filterNotes(const QString &searchText)
         auto *item = ui->listWidget->item(i);
         auto *widget = static_cast<NoteWidget *>(ui->listWidget->itemWidget(item));
 
-        if (widget->getTitle().contains(searchText, Qt::CaseInsensitive) || widget->getContent().contains(searchText, Qt::CaseInsensitive))
+        if (widget->getTitle().contains(searchText, Qt::CaseInsensitive) || widget->getTags().contains(searchText, Qt::CaseInsensitive))
         {
             item->setHidden(false);
         }

@@ -47,13 +47,13 @@ private:
     QString title;
     QString lastModified;
     QString content = "";
+    QString tags = "";
 
     const QString dateTimeFormat = "dd.MM.yyyy - hh:mm:ss";
 
 public:
     QString getTitle();
-    QString getContent();
-
+    QString getTags();
 };
 
 #endif // NOTEWIDGET_H

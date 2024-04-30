@@ -24,8 +24,6 @@ MainWindow::MainWindow(NotesManager &manager, QWidget *parent) : QMainWindow(par
     connect(ui->graphWidget, &GraphWidget::onMoveItemClicked, this, &MainWindow::onMoveItemClicked);
     connect(ui->graphWidget, &GraphWidget::removeNoteGraph, this, &MainWindow::onRemoveNote);
     connect(ui->graphWidget, &GraphWidget::renameNoteGraph, this, &MainWindow::onRenameNote);
-
-    // onSelectedNoteChanged(1);
 }
 
 MainWindow::~MainWindow()

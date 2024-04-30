@@ -116,7 +116,7 @@ void NotesManager::writeNotes()
 
 void NotesManager::getTagsFromContent(int id)
 {
-    QString content = notes.at(id).first.content;
+    QString content = notes.at(id).first.content + " ";
     QString tags;
     QString word;
     bool withinWord = false;
@@ -158,7 +158,7 @@ void NotesManager::getTagsFromContent(int id)
 std::unique_ptr<QTextDocument> NotesManager::createNewTextDocument(const Note &note)
 {
     auto textDocument = std::make_unique<QTextDocument>(note.content);
-    connect(textDocument.get(), &QTextDocument::contentsChange, mapChangedSignalToNoteId, qOverload<>(&QSignalMapper::map)); // ToDo
+    connect(textDocument.get(), &QTextDocument::contentsChange, mapChangedSignalToNoteId, qOverload<>(&QSignalMapper::map));
     mapChangedSignalToNoteId->setMapping(textDocument.get(), note.id);
     return textDocument;
 }
