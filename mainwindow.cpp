@@ -123,7 +123,7 @@ void MainWindow::removeNote(int id)
             ui->textEdit->setDocument(nullptr);
         }
 
-        ui->notesListWidget->removeCurrentNote(); // here is errrorrorororrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr !!!!!!!!!!!!!!!!!!!!!!!!!11 404
+        ui->notesListWidget->removeCurrentNote();
         ui->graphWidget->removeNote(id);
         notesManager.removeNote(id);
         qDebug() << "deleted.";
@@ -139,10 +139,4 @@ void MainWindow::init()
     {
         addNoteToList(note);
     }
-}
-
-void MainWindow::on_tabWidget_currentChanged(int index)
-{
-    // if (index == 1) init();
-    // qDebug() << index;
 }

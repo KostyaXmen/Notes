@@ -25,7 +25,6 @@ private slots:
     // Handle signal from ui
     void on_newNoteButton_clicked();
     void on_removeNoteButton_clicked();
-    void on_tabWidget_currentChanged(int index);
 
     // Handle NotesManager signals
     void onNewNoteCreated(int id);

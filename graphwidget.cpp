@@ -266,5 +266,4 @@ void GraphWidget::onRenameActionTriggered()
     {
         emit renameNoteGraph(selectedNoteId, renameDialog.newNane());
     }
-    qDebug() << "reNAME - " << selectedNoteId;
 }

@@ -4,8 +4,7 @@
 #include <QPushButton>
 
 RenameDialog::RenameDialog(const QString &oldName, QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::RenameDialog)
+    : QDialog(parent), ui(new Ui::RenameDialog)
 {
     ui->setupUi(this);
 
