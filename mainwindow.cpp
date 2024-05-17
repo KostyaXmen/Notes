@@ -24,6 +24,11 @@ MainWindow::MainWindow(NotesManager &manager, QWidget *parent) : QMainWindow(par
     connect(ui->graphWidget, &GraphWidget::onMoveItemClicked, this, &MainWindow::onMoveItemClicked);
     connect(ui->graphWidget, &GraphWidget::removeNoteGraph, this, &MainWindow::onRemoveNote);
     connect(ui->graphWidget, &GraphWidget::renameNoteGraph, this, &MainWindow::onRenameNote);
+    for (int i = 0; i < notesManager.count() + 1; i++)
+    {
+        ui->notesListWidget->setCurrentNote(i);
+    }
+    ui->notesListWidget->setCurrentNote(1);
 }
 
 MainWindow::~MainWindow()
@@ -97,8 +102,6 @@ void MainWindow::onMoveItemClicked(const int id, const QString &title)
     {
         ui->notesListWidget->setSearchText(title);
     }
-
-    qDebug() << id << "-" << title;
     ui->tabWidget->setCurrentIndex(0);
     ui->graphWidget->updateLines();
 }
@@ -126,7 +129,6 @@ void MainWindow::removeNote(int id)
         ui->notesListWidget->removeCurrentNote();
         ui->graphWidget->removeNote(id);
         notesManager.removeNote(id);
-        qDebug() << "deleted.";
     }
 }
 

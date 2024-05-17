@@ -126,8 +126,6 @@ void GraphWidget::updateTags(const Note &note)
         if (noteItem && noteItem->itemType == MoveItem::noteType && noteItem->id == note.id)
         {
             noteItem->tags = note.tags;
-            qDebug() << noteItem->tags;
-
             break;
         }
     }
@@ -244,10 +242,10 @@ void GraphWidget::showContextMenu(const QPoint &pos)
     QMenu contextMenu(this);
 
     QAction *renameAction = contextMenu.addAction("Rename Note");
-    renameAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Compurer science/LabWork_2/Task_2/hospital.png")); // ToDo
+    renameAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/sourse/edit.png"));
     connect(renameAction, &QAction::triggered, this, &GraphWidget::onRenameActionTriggered);
     QAction *removeAction = contextMenu.addAction("Remove Note");
-    removeAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Compurer science/LabWork_2/Task_2/hospital.png")); // ToDo
+    removeAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/sourse/trash.png"));
     connect(removeAction, &QAction::triggered, this, &GraphWidget::onRemoveActionTriggered);
 
     contextMenu.exec(pos);
@@ -256,7 +254,6 @@ void GraphWidget::showContextMenu(const QPoint &pos)
 void GraphWidget::onRemoveActionTriggered()
 {
     emit removeNoteGraph(selectedNoteId);
-    qDebug() << "remove - " << selectedNoteId;
 }
 
 void GraphWidget::onRenameActionTriggered()

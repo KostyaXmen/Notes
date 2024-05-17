@@ -7,7 +7,6 @@
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
-#include <QDebug>
 #include <QCursor>
 
 #include "note.h"

@@ -32,7 +32,6 @@ void NoteWidget::updateContent(const Note &note)
     lastModified = note.lastModified.toString(dateTimeFormat);
     content = note.content.left(10).replace("\n", " ") + "...";
     tags = note.tags;
-    qDebug() << tags;
 
     updateLabels();
     setToolTip(QString("%0\n%1\n%2").arg(title).arg(lastModified).arg(content));
@@ -88,10 +87,10 @@ void NoteWidget::showContextMenu(const QPoint &pos)
     QMenu contextMenu(this);
 
     QAction *renameAction = contextMenu.addAction("Rename Note");
-    renameAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Compurer science/LabWork_2/Task_2/hospital.png")); // ToDo
+    renameAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/sourse/edit.png"));
     connect(renameAction, &QAction::triggered, this, &NoteWidget::onRenameActionTriggered);
     QAction *removeAction = contextMenu.addAction("Remove Note");
-    removeAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Compurer science/LabWork_2/Task_2/hospital.png")); // ToDo
+    removeAction->setIcon(QIcon("/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/sourse/trash.png"));
     connect(removeAction, &QAction::triggered, this, &NoteWidget::onRemoveActionTriggered);
 
     contextMenu.exec(pos);
