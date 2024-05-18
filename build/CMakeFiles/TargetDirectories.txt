@@ -1,0 +1,5 @@
+/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/CMakeFiles/Obsidian.dir
+/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/CMakeFiles/edit_cache.dir
+/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/CMakeFiles/rebuild_cache.dir
+/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/CMakeFiles/Obsidian_autogen_timestamp_deps.dir
+/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/CMakeFiles/Obsidian_autogen.dir

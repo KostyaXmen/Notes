@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/Obsidian_autogen/mocs_compilation.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/mocs_compilation.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/Obsidian.dir/Obsidian_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/main.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/main.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/main.cpp",
+  "output": "CMakeFiles/Obsidian.dir/main.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/mainwindow.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/mainwindow.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/mainwindow.cpp",
+  "output": "CMakeFiles/Obsidian.dir/mainwindow.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/noteslistwidget.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/noteslistwidget.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/noteslistwidget.cpp",
+  "output": "CMakeFiles/Obsidian.dir/noteslistwidget.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/notesmanager.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/notesmanager.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/notesmanager.cpp",
+  "output": "CMakeFiles/Obsidian.dir/notesmanager.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/notewidget.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/notewidget.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/notewidget.cpp",
+  "output": "CMakeFiles/Obsidian.dir/notewidget.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/renamedialog.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/renamedialog.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/renamedialog.cpp",
+  "output": "CMakeFiles/Obsidian.dir/renamedialog.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/xlmstorage.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/xlmstorage.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/xlmstorage.cpp",
+  "output": "CMakeFiles/Obsidian.dir/xlmstorage.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/graphwidget.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/graphwidget.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/graphwidget.cpp",
+  "output": "CMakeFiles/Obsidian.dir/graphwidget.cpp.o"
+},
+{
+  "directory": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/build/Obsidian_autogen/include\" -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -std=gnu++17 -fno-direct-access-external-data -o CMakeFiles/Obsidian.dir/moveitem.cpp.o -c \"/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/moveitem.cpp\"",
+  "file": "/home/konstantin/Рабочий стол/Курсовая работа/Notes_final/moveitem.cpp",
+  "output": "CMakeFiles/Obsidian.dir/moveitem.cpp.o"
+}
+]
